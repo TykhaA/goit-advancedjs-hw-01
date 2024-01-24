@@ -14,25 +14,24 @@ textarea.addEventListener("input", throt_fun);
 form.addEventListener("submit", handlSubmit);
 const obj = {};
 function handlValue() {
-    console.log(input.value)
-    console.log(textarea.value)
 
-    obj.inputValue = input.value;
-    obj.textareaValue = textarea.value;
+    obj.email = input.value;
+    obj.message = textarea.value;
         localStorage.setItem(KEY, JSON.stringify(obj));
 }
 
 const getItem = JSON.parse(localStorage.getItem(KEY));
 
 if (getItem) {
-    input.value = getItem.inputValue;
-    textarea.value = getItem.textareaValue;
+    input.value = getItem.email;
+    textarea.value = getItem.message;
 }
 function handlSubmit(evt) {
     evt.preventDefault();
+    if (!input.value.trim().length || !textarea.value.trim().length) return;
     localStorage.removeItem(KEY);
-    obj.inputValue = input.value;
-    obj.textareaValue = textarea.value;
+    obj.email = input.value;
+    obj.message = textarea.value;
     console.log(obj);
     form.reset();
 }

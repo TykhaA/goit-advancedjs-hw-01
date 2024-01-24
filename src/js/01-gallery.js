@@ -15,11 +15,7 @@ return `<li class="gallery__item">
 }).join('');
 list.insertAdjacentHTML('afterbegin', markUp);
 
-let gallery = new SimpleLightbox('.gallery a');
-    gallery.on('show.simplelightbox',addTitle);
-
-function addTitle() {
-    gallery.options.captionsData = 'alt';
-    gallery.options.captionDelay = '250';
-}
-console.log(galleryItems);
+let gallery = new SimpleLightbox('.gallery a', {
+    captionsData : 'alt',
+    captionDelay :'250'
+});
